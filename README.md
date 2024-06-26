@@ -102,10 +102,12 @@ If you confuse about the routine of exception or interrupt, you makeit by yourse
 
 # 7. Simulation
 <div align="center">
-<img src="/image/8.jpg">
+<img src="/image/sm1.png">
 </div>
-At PC_current equal to 0 the first Instruction decoded and excute as you can see. So let check in Register File to see if it load the data or not ? 
 <div align="center">
-<img src="/image/9.jpg">
+<img src="/image/sm2.png">
 </div>
-OKAY So it seem working !!!
+<div align="center">
+<img src="/image/sm3.png">
+</div>
+Overflow is just a part from various exception, it must be some exception I never know.
