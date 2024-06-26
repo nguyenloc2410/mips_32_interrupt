@@ -93,7 +93,7 @@ EPC register used for storing the current PC orthe next PC only for the interrup
 
 
 If you confuse about the routine of exception or interrupt, you makeit by yourself easily whatever you want.
-# 6. RTL Viewer
+# 6. Abstract View
 <div align="center">
 <img src="/image/rtl viewer1.png">
 <img src="/image/cunit.jpg">
