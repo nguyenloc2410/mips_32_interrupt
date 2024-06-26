@@ -96,7 +96,7 @@ If you confuse about the routine of exception or interrupt, you makeit by yourse
 # 6. Abstract View
 <div align="center">
 <img src="/image/rtl viewer1.png">
-<img src="/image/cunit.jpg">
+<img src="/image/cunit.png">
 <img src="/image/7.jpg">
 </div>
 
