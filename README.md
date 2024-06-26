@@ -15,7 +15,7 @@ In this project, we going to separate each block of MIPS Processor and implement
 
 And the block controls all these blocks unit above called Control Unit (CU), I think this block is the most important than others.
 
-  # 3. Contraint <br/>
+  # 3. Contraints <br/>
  1. There is only one external asynchronous interrupt request.
  2. The CPU deals with only three exceptions: arithmetic signed overflow, unimplemented instruction, and systemcall.
  3. For exceptions,the address of the current instruction that generates the exception is saved to EPC;for
@@ -24,18 +24,9 @@ And the block controls all these blocks unit above called Control Unit (CU), I t
  5. Inresponse to an interrupt or anexception, the content of the Status register is shifted to the left 4 bits in order to save previous settings of the Status register and disable further interrupts.
  6.When returning from the interrupt/exceptionhandler, the content of the Status register is shifted to the right by 4bits in order to restore the previous settings of the Status register.
 
-# 4. Instructions Structure
-4.1 R-Type
+# 4. Registers related to exceptions and interrupts
 <div align="center">
-<img src="/image/3.png">
-</div>
-4.2 I-Type
-<div align="center">
-<img src="/image/2.png">
-</div>
-4.3 Jump
-<div align="center">
-<img src="/image/4.png">
+<img src="/image/cpu_circuit.png">
 </div>
 
 # 5. Instruction Memory 
