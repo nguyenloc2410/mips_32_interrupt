@@ -2,7 +2,7 @@
 # 1. MIPS with Exceptions and Interrupts Handling  Diagram
 
 <div align="center">
-<img src="/image/0.png">
+<img src="/image/cpu_circuit.png">
 </div>
 
 # 2. Approach <br/>
