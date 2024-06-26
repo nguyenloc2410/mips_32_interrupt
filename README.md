@@ -16,16 +16,13 @@ In this project, we going to separate each block of MIPS Processor and implement
 And the block controls all these blocks unit above called Control Unit (CU), I think this block is the most important than others.
 
   # 3. Contraint <br/>
- 1. Thereisonlyoneexternalasynchronousinterruptrequest.
- 2. TheCPUdealswithonlythreeexceptions:arithmeticsignedoverflow,unimplementedinstruction,
- andsystemcall.
- 3. Forexceptions,theaddressofthecurrentinstructionthatgeneratestheexceptionissavedtoEPC;for
- interrupt,theaddressofthenextinstructionissavedtoEPC.
- 4. Thepolledinterruptisadopted.Theentryaddressoftheinterrupt/exceptionhandleris0x00000008.
- 5. Inresponsetoaninterruptoranexception, thecontentoftheStatusregisterisshiftedtotheleftby
- 4bitsinordertosaveprevioussettingsoftheStatusregisteranddisablefurtherinterrupts.
- 6.Whenreturningfromtheinterrupt/exceptionhandler, thecontentoftheStatusregisterisshiftedto
- therightby4bitsinordertorestoretheprevioussettingsoftheStatusregister.
+ 1. There is only one external asynchronous interrupt request.
+ 2. The CPU deals with only three exceptions: arithmetic signed overflow, unimplemented instruction, and systemcall.
+ 3. For exceptions,the address of the current instruction that generates the exception is saved to EPC;for
+ interrupt,the address of the next instruction is saved to EPC.
+ 4. The polled interrupt is adopted.The entry address of the interrupt/exceptionhandler is 0x00000008.
+ 5. Inresponse to an interrupt or anexception, the content of the Status register is shifted to the left 4 bits in order to save previous settings of the Status register and disable further interrupts.
+ 6.When returning from the interrupt/exceptionhandler, the content of the Status register is shifted to the right by 4bits in order to restore the previous settings of the Status register.
 
 # 4. Instructions Structure
 4.1 R-Type
