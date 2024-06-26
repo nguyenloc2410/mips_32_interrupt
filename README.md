@@ -29,6 +29,9 @@ And the block controls all these blocks unit above called Control Unit (CU), I t
 <img src="/image/registers.png">
 </div>
 
+Cause register used for detecting what kind of exceptions and interrupts
+Status register used for warning to other I/O. It says "hey i am in trouble OK ?, so dont bother me ?"
+EPC register used for storing the current PC orthe next PC only for the interrupt.
 # 5. Instruction Memory 
 * 0000010000000000 load R0 <- Mem(R2 + 0)
 * 0000010001000001 load R1 <- Mem(R2 + 1)
