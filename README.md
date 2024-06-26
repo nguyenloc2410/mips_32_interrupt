@@ -33,31 +33,31 @@ Cause register used for detecting what kind of exceptions and interrupts<br/>
 Status register used for warning to other I/O. It says "hey i am in trouble OK ?, so dont bother me ?"<br/>
 EPC register used for storing the current PC orthe next PC only for the interrupt.<br/>
 # 5. Instruction Memory 
- 0:0800001d;% (00) j start #entryonreset %
- 1:00000000;% (04) nop # %
- % exc_base: #exceptionhandler %
- 2:401a6800;% (08) mfc0$26,c0_cause #readcp0causereg %
- 3:335b000c;% (0c) andi$27,$26,0xc #getexccode,2bitshere %
- 4:8f7b0020;% (10) lw $27,j_table($27)#getaddressfromtable %
- 5:00000000;% (14) nop # %
- 6:03600008;% (18) jr $27 #jumptothataddress %
- 7:00000000;% (1c) nop # %
- % int_entry: #0.interrupthandler %
- c:00000000;% (30) nop #dealwithinterrupthere %
- d:42000018;% (34) eret #returnfrominterrupt %
- e:00000000;% (38) nop # %
- % sys_entry: #1.syscallhandler %
- f:00000000;% (3c) nop #dosomethinghere %
- % epc_plus4: # %
- 10:401a7000;%(40) mfc0 $26,c0_epc #getepc %
- 11:235a0004;%(44) addi $26,$26, 4 #epc+4 %
- 12:409a7000;%(48) mtc0 $26,c0_epc #epc<-epc+4 %
- 13:42000018;%(4c) eret #returnfromexception %
- 14:00000000;%(50) nop # %
- % uni_entry: #2.unimpl.inst.handler %
- 15:00000000;%(54) nop #dosomethinghere %
- 16:08000010;%(58) j epc_plus4 #return %
- 17:00000000;%(5c) nop # %
+ 0:0800001d;% (00) j start #entryonreset <br/>
+ 1:00000000;% (04) nop # <br/>
+ % exc_base: #exceptionhandler <br/>
+ 2:401a6800;% (08) mfc0$26,c0_cause #readcp0causereg %<br/>
+ 3:335b000c;% (0c) andi$27,$26,0xc #getexccode,2bitshere %<br/>
+ 4:8f7b0020;% (10) lw $27,j_table($27)#getaddressfromtable %<br/>
+ 5:00000000;% (14) nop # %<br/>
+ 6:03600008;% (18) jr $27 #jumptothataddress %<br/>
+ 7:00000000;% (1c) nop # %<br/>
+ % int_entry: #0.interrupthandler %<br/>
+ c:00000000;% (30) nop #dealwithinterrupthere %<br/>
+ d:42000018;% (34) eret #returnfrominterrupt %<br/>
+ e:00000000;% (38) nop # %<br/>
+ % sys_entry: #1.syscallhandler %<br/>
+ f:00000000;% (3c) nop #dosomethinghere %<br/>
+ % epc_plus4: # %<br/>
+ 10:401a7000;%(40) mfc0 $26,c0_epc #getepc %<br/>
+ 11:235a0004;%(44) addi $26,$26, 4 #epc+4 %<br/>
+ 12:409a7000;%(48) mtc0 $26,c0_epc #epc<-epc+4 %<br/>
+ 13:42000018;%(4c) eret #returnfromexception %<br/>
+ 14:00000000;%(50) nop # %<br/>
+ % uni_entry: #2.unimpl.inst.handler %<br/>
+ 15:00000000;%(54) nop #dosomethinghere %<br/>
+ 16:08000010;%(58) j epc_plus4 #return %<br/>
+ 17:00000000;%(5c) nop # %<br/>
 
 # 6. RTL Viewer
 <div align="center">
