@@ -58,6 +58,38 @@ EPC register used for storing the current PC orthe next PC only for the interrup
  15:00000000;%(54) nop #dosomethinghere %<br/>
  16:08000010;%(58) j epc_plus4 #return %<br/>
  17:00000000;%(5c) nop # %<br/>
+  % ovf_entry: #3.overflowhandler %<br/>
+ 1a:00000000;%(68) nop #dosomethinghere %<br/>
+ 1b:08000010;%(6c) j epc_plus4 #return %<br/>
+ 1c:00000000;%(70) nop # %<br/>
+ % start: # %<br/>
+ 1d:2008000f;%(74) addi$8,$0,0xf #im[3:0]<-1111 %<br/>
+ 1e:40886000;%(78) mtc0$8,c0_status #exc/intrenable %<br/>
+ 1f:8c080048;%(7c) lw $8,0x48($0) #tryoverflowexception %<br/>
+ 20:8c09004c;%(80) lw $9,0x4c($0) #causedbyadd %<br/>
+ % ov: # %<br/>
+ 21:01094020;%(84) add $9,$9,$8 #overflow %<br/>
+ 22:00000000;%(88) nop # %<br/>
+ % sys: # %
+ 23:0000000c;%(8c) syscall #systemcall %<br/>
+ 24:00000000;%(90) nop # %<br/>
+ % unimpl: # %
+ 25:0128001a;%(94) div $9,$8 #div,butnotimplemented %<br/>
+ 26:00000000;%(98) nop # %<br/>
+ % int: # %
+ 27:34040050;%(9c) ori $4,$1,0x50 #addressofdata[0] %<br/>
+ 28:20050004;%(a0) addi$5,$0, 4 #counter %<br/>
+ 29:00004020;%(a4) add $8,$0,$0 #sum<-0 %<br/>
+ % loop: # %<br/>
+ 2a:8c890000;%(a8) lw $9,0($4) #loaddata %<br/>
+ 2b:20840004;%(ac) addi$4,$4, 4 #address+4 %<br/>
+ 2c:01094020;%(b0) add $8,$8,$9 #sum %<br/>
+ 2d:20a5ffff;%(b4) addi$5,$5,-1 #counter-1 %<br/>
+ 2e:14a0fffb;%(b8) bne $5,$0,loop #finish? %<br/>
+ 2f:00000000;%(bc) nop # %<br/>
+ % finish: # %<br/>
+ 30:08000030;%(c0) j finish #deadloop %<br/>
+ END;<br/>
 
 # 6. RTL Viewer
 <div align="center">
