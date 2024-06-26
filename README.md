@@ -26,7 +26,7 @@ And the block controls all these blocks unit above called Control Unit (CU), I t
 
 # 4. Registers related to exceptions and interrupts
 <div align="center">
-<img src="/image/cpu_circuit.png">
+<img src="/image/register.png">
 </div>
 
 # 5. Instruction Memory 
