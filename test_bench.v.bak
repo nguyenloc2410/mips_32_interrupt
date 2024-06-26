@@ -1,0 +1,30 @@
+`timescale 1ns / 1ps
+module test_bench;
+//input
+reg clk, mem_clk;
+reg reset;
+//output
+wire [31:0] a, b, alu, adr, tom, fromm, pc, ir;
+wire [2:0] q;
+
+mccomp uut (clk, reset, q, a, b, alu, adr, tom, fromm, pc, ir, mem_clk);
+initial begin
+   clk = 1;
+	mem_clk = 0;
+	reset = 0;
+end
+initial begin 
+ forever begin
+ #5 clk = ~clk;
+ end
+end
+initial begin 
+ forever begin
+ #1.25 mem_clk = ~mem_clk;
+ end
+end
+initial begin
+#2
+reset = 1;
+end
+endmodule

@@ -1,0 +1,7 @@
+module priority_en(intr, ena, intr_req, vec);
+input [7:0] intr;
+input ena;
+output int_req;
+output vec;
+
+endmodule
