@@ -91,6 +91,8 @@ EPC register used for storing the current PC orthe next PC only for the interrup
  30:08000030;%(c0) j finish #deadloop %<br/>
  END;<br/>
 
+
+If you confuse about the routine of exception or interrupt, you makeit by yourself easily whatever you want.
 # 6. RTL Viewer
 <div align="center">
 <img src="/image/5.jpg">
