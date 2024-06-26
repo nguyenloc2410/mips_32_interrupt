@@ -33,21 +33,31 @@ Cause register used for detecting what kind of exceptions and interrupts<br/>
 Status register used for warning to other I/O. It says "hey i am in trouble OK ?, so dont bother me ?"<br/>
 EPC register used for storing the current PC orthe next PC only for the interrupt.<br/>
 # 5. Instruction Memory 
-* 0000010000000000 load R0 <- Mem(R2 + 0)
-* 0000010001000001 load R1 <- Mem(R2 + 1)
-* 0010000001010000 Add R2 <- R0 + R1
-* 0001001010000000 Store Mem(R1 + 0) <- R2
-* 0011000001010000 sub R2 <- R0 - R1
-* 0100000001010000 invert R2 <- !R0 
-* 0101000001010000 logical shift left R2 <- R0<<R1 
-* 0110000001010000 logical shift right R2 <- R0>>R1 
-* 0111000001010000 AND R2<- R0 AND R1 
-* 1000000001010000 OR R2<- R0 OR R1 
-* 1001000001010000 SLT R2 <- 1 if R0 < R1 
-* 0010000000000000 Add R0 <- R0 + R0
-* 1011000001000001 BEQ branch to jump if R0=R1, PCnew= PC+2+offset<<1 = 28 => offset = 1
-* 1100000001000000 BNE branch to jump if R0!=R1, PCnew= PC+2+offset<<1 = 28 => offset = 0
-* 1101000000000000 J jump to the beginning address
+ 0:0800001d;% (00) j start #entryonreset %
+ 1:00000000;% (04) nop # %
+ % exc_base: #exceptionhandler %
+ 2:401a6800;% (08) mfc0$26,c0_cause #readcp0causereg %
+ 3:335b000c;% (0c) andi$27,$26,0xc #getexccode,2bitshere %
+ 4:8f7b0020;% (10) lw $27,j_table($27)#getaddressfromtable %
+ 5:00000000;% (14) nop # %
+ 6:03600008;% (18) jr $27 #jumptothataddress %
+ 7:00000000;% (1c) nop # %
+ % int_entry: #0.interrupthandler %
+ c:00000000;% (30) nop #dealwithinterrupthere %
+ d:42000018;% (34) eret #returnfrominterrupt %
+ e:00000000;% (38) nop # %
+ % sys_entry: #1.syscallhandler %
+ f:00000000;% (3c) nop #dosomethinghere %
+ % epc_plus4: # %
+ 10:401a7000;%(40) mfc0 $26,c0_epc #getepc %
+ 11:235a0004;%(44) addi $26,$26, 4 #epc+4 %
+ 12:409a7000;%(48) mtc0 $26,c0_epc #epc<-epc+4 %
+ 13:42000018;%(4c) eret #returnfromexception %
+ 14:00000000;%(50) nop # %
+ % uni_entry: #2.unimpl.inst.handler %
+ 15:00000000;%(54) nop #dosomethinghere %
+ 16:08000010;%(58) j epc_plus4 #return %
+ 17:00000000;%(5c) nop # %
 
 # 6. RTL Viewer
 <div align="center">
