@@ -6,7 +6,7 @@
 </div>
 
 # 2. Approach <br/>
-In this project, we going to separate each block of RISC-V Processor and implement it as well. So each specific block is listed as follows: <br/>
+In this project, we going to separate each block of MIPS Processor and implement it as well. So each specific block is listed as follows: <br/>
 * Program Counter (PC)<br/>
 * Instruction Memory <br/>
 * Register File <br/>
